@@ -1,5 +1,5 @@
 require 'securerandom'
-require './nameable'
+require_relative './nameable'
 
 class Person < Nameable
   # Define the constructor method with three parameters:
