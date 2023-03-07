@@ -12,4 +12,3 @@ class BaseDecorator < Nameable
     @nameable.correct_name
   end
 end
-

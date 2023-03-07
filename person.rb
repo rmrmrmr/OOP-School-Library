@@ -7,6 +7,7 @@ require_relative './trim_decorator'
 class Person < Nameable
   # Define the constructor method with three parameters:
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     # Generate a random UUID for each new Person object:
     @id = SecureRandom.uuid
     # Set the name, age & parent_permission of the Person:
@@ -48,11 +49,11 @@ end
 
 # Creates a new instance of the Person object with 22 as age and 'maximilianus' as name
 person = Person.new(22, 'maximilianus')
-  # prints out into the console the string 'maximilianus'
-  puts person.correct_name
-  capitalizedPerson = CapDecorator.new(person)
-  # prints out into the console the string 'Maximilianus'
-  puts capitalizedPerson.correct_name
-  capitalizedTrimmedPerson = TrimDecorator.new(capitalizedPerson)
-  # prints out into the console the string 'Maximilian'
-  puts capitalizedTrimmedPerson.correct_name
+# prints out into the console the string 'maximilianus'
+puts person.correct_name
+capitalized_person = CapDecorator.new(person)
+# prints out into the console the string 'Maximilianus'
+puts capitalized_person.correct_name
+capitalized_trimmed_person = TrimDecorator.new(capitalized_person)
+# prints out into the console the string 'Maximilian'
+puts capitalized_trimmed_person.correct_name
