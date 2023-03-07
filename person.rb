@@ -1,8 +1,13 @@
 require 'securerandom'
+require_relative './nameable'
+require_relative './cap_decorator'
+require_relative './base_decorator'
+require_relative './trim_decorator'
 
-class Person
+class Person < Nameable
   # Define the constructor method with three parameters:
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     # Generate a random UUID for each new Person object:
     @id = SecureRandom.uuid
     # Set the name, age & parent_permission of the Person:
@@ -28,6 +33,11 @@ class Person
     end
   end
 
+  # Define a method that overrides the correct_name from Nameable parent so that it return the @name attribute
+  def correct_name
+    @name
+  end
+
   private
 
   # Define a private method to determine if the person is of age:
@@ -36,3 +46,14 @@ class Person
     @id >= 18
   end
 end
+
+# Creates a new instance of the Person object with 22 as age and 'maximilianus' as name
+person = Person.new(22, 'maximilianus')
+# prints out into the console the string 'maximilianus'
+puts person.correct_name
+capitalized_person = CapDecorator.new(person)
+# prints out into the console the string 'Maximilianus'
+puts capitalized_person.correct_name
+capitalized_trimmed_person = TrimDecorator.new(capitalized_person)
+# prints out into the console the string 'Maximilian'
+puts capitalized_trimmed_person.correct_name
