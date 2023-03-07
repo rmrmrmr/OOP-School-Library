@@ -1,6 +1,7 @@
 require 'securerandom'
+require './nameable'
 
-class Person
+class Person < Nameable
   # Define the constructor method with three parameters:
   def initialize(age, name = 'Unknown', parent_permission: true)
     # Generate a random UUID for each new Person object:
@@ -26,6 +27,11 @@ class Person
     else
       false
     end
+  end
+
+  # Define a method that overrides the correct_name from Nameable parent so that it return the @name attribute
+  def correct_name
+    @name
   end
 
   private
