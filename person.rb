@@ -1,5 +1,8 @@
 require 'securerandom'
 require_relative './nameable'
+require_relative './cap_decorator'
+require_relative './base_decorator'
+require_relative './trim_decorator'
 
 class Person < Nameable
   # Define the constructor method with three parameters:
@@ -42,3 +45,14 @@ class Person < Nameable
     @id >= 18
   end
 end
+
+# Creates a new instance of the Person object with 22 as age and 'maximilianus' as name
+person = Person.new(22, 'maximilianus')
+  # prints out into the console the string 'maximilianus'
+  puts person.correct_name
+  capitalizedPerson = CapDecorator.new(person)
+  # prints out into the console the string 'Maximilianus'
+  puts capitalizedPerson.correct_name
+  capitalizedTrimmedPerson = TrimDecorator.new(capitalizedPerson)
+  # prints out into the console the string 'Maximilian'
+  puts capitalizedTrimmedPerson.correct_name
