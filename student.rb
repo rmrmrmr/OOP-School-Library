@@ -1,18 +1,19 @@
-# Require the Person class from the person.rb file in the same directory
 require_relative './person'
 
-# Define a new class called Student that inherits from the Person class
 class Student < Person
-  # Define an initialize method with four parameters
-  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
-    # Call the initialize method of the Person class with the name, age, and parent_permission arguments
-    super(age, name, parent_permission)
-    # Assign the value of the classroom argument to the instance variable @classroom
+  attr_reader :classroom
+
+  def initialize(age, classroom, name = 'Unknown', parent_permission: true)
     @classroom = classroom
+    super(age, @name = name, parent_permission:)
   end
 
-  # Define a method called play_hooky that returns the string '"¯\(ツ)/¯"'
   def play_hooky
-    '¯\(ツ)/¯'
+    '"¯\(ツ)/¯"'
+  end
+
+  def classroom=(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
