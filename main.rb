@@ -26,7 +26,7 @@ john.classroom.label
 one.students
 puts one.students_names
 
-rent_one = Rental.new(Date.new(2022, 01, 22), 'Ethics', 'Bob')
+rent_one = Rental.new(Date.new(2022, 0o1, 22), 'Ethics', 'Bob')
 bob = Person.new(22, 'Bob')
 puts rent_one.person
 bob.add_rental(rent_one)
