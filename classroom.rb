@@ -13,6 +13,6 @@ class Classroom
   end
 
   def students_names
-    @students.each_with_index { |x, i| puts "Student #{i+1} name is #{x.name}"}
+    @students.each_with_index { |x, i| puts "Student #{i + 1} name is #{x.name}" }
   end
 end
