@@ -4,14 +4,13 @@ require_relative './nameable'
 class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
-    @id = SecureRandom.uuid
-    @name = name
     @age = age
+    @name = name
     @parent_permission = parent_permission
+    @id = SecureRandom.uuid
   end
 
-  attr_accessor :name
-  attr_accessor :age
+  attr_accessor :name, :age
 
   attr_reader :id
 
