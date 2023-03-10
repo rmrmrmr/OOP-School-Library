@@ -1,4 +1,4 @@
-['book', 'person', 'rental', 'student', 'teacher'].each do |x|
+%w[book person rental student teacher].each do |x|
   require_relative x
 end
 class App
@@ -43,12 +43,12 @@ class App
           puts 'Invalid input, please write Y or N'
           print 'Has parent permission? [Y/N]: '
         end
-        Student.new(age, classroom, name: name, parent_permission: permission)
+        Student.new(age, classroom, name:, parent_permission: permission)
         puts 'Student added the database successfully!'
       when 2
         print 'Specialization: '
         specialization = gets.chomp
-        Teacher.new(age, specialization, name: name)
+        Teacher.new(age, specialization, name:)
         puts 'Teacher added to the database successfully!'
       end
     else
