@@ -1,43 +1,51 @@
-['person.rb', 'cap_decorator.rb', 'trim_decorator.rb', 'student.rb', 'classroom.rb', 'rental.rb', 'book.rb'].each do |x|
-  require_relative x
+require_relative './app'
+
+class Interface
+  puts 'Welcome to the School Library App'
+  def interface
+    puts 'Please choose an option by entering a number:'
+    puts '1 - List all books'
+    puts '2 - List all people'
+    puts '3 - Create a person'
+    puts '4 - Create a book'
+    puts '5 - Create a rental'
+    puts '6 - List all rentals for a given person id'
+    puts '7 - Exit'
+  end
 end
 
-person = Person.new(22, 'maximilianus')
-puts person.correct_name
-capitalized_person = CapDecorator.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = TrimDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+class Main
+  def initialize
+    @app = App.new
+    @interface = Interface.new
+  end
 
-alex = Student.new(22, 'One', 'Alex', parent_permission: false)
-one = Classroom.new('One')
-alex.classroom
-one.add_student(alex)
-alex.classroom
-alex.classroom.label
-one.students
-puts one.students_names
+  def run
+    puts @interface.interface
+    input = gets.chomp.to_i
+    options(input)
+  end
 
-john = Student.new(24, 'One', 'John', parent_permission: true)
-john.classroom
-one.add_student(john)
-john.classroom
-john.classroom.label
-one.students
-puts one.students_names
-
-rent_one = Rental.new(Date.new(2022, 0o1, 22), 'Ethics', 'Bob')
-bob = Person.new(22, 'Bob')
-puts rent_one.person
-bob.add_rental(rent_one)
-puts rent_one.person
-puts rent_one.person.name
-puts bob.rentals
-
-ethics = Book.new('Ethics', 'Spinoza')
-puts rent_one.book
-ethics.add_rental(rent_one)
-puts rent_one.book
-puts rent_one.book.title
-puts rent_one.book.author
-puts ethics.rentals
+  def options(input)
+    selection = {
+      1 => 'list_books',
+      2 => 'list_people',
+      3 => 'create_person',
+      4 => 'create_book',
+      5 => 'create_rental',
+      6 => 'list_rentals'
+    }
+    case input
+    when 1..6
+      @app.send(selection[input])
+      run
+    when 7
+      puts 'Thank you for using this app!'
+    else
+      puts 'Invalid option, please type 1, 2, 3, 4, 5, 6 or 7'
+      run
+    end
+  end
+end
+main = Main.new
+main.run
