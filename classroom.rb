@@ -15,4 +15,8 @@ class Classroom
   def students_names
     @students.each_with_index { |x, i| puts "Student #{i + 1} name is #{x.name}" }
   end
+
+  def self.all
+    ObjectSpace.each_object(self).to_a
+  end
 end
