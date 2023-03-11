@@ -1,16 +1,15 @@
-require 'securerandom'
 require_relative './nameable'
 
 class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id, :rentals
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(age, name: 'Unknown', parent_permission: true)
     super()
     @age = age
     @name = name
     @parent_permission = parent_permission
-    @id = SecureRandom.uuid
+    @id = Random.rand(1..1000)
     @rentals = []
   end
 
@@ -29,6 +28,10 @@ class Person < Nameable
   def add_rental(rental)
     @rentals.push(rental)
     rental.person = self
+  end
+
+  def self.all
+    ObjectSpace.each_object(self).to_a
   end
 
   private

@@ -13,6 +13,8 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -89,6 +91,16 @@ To run the project, execute the following command:
 - GitHub: [@rmrmrmr](https://github.com/rmrmrmr)
 - Twitter: [@ricmtza](https://twitter.com/ricmtza)
 - LinkedIn: [LinkedIn](www.linkedin.com/in/ricardo-mag)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **[Complete test suite]**
+- [ ] **[Refactor using DRY principles]**
+- [ ] **[Data Preservation]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
